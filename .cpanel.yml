@@ -1,4 +1,4 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/bridgehu/public_html/
+    - export DEPLOYPATH=/home/bridgehu/spettro/
     - /bin/cp -r dist/* $DEPLOYPATH
