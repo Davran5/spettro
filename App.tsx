@@ -161,7 +161,7 @@ const App: React.FC = () => {
                 transition-all duration-300 origin-top
                 ${isLangOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'}
              `}>
-              {(['UZ', 'RU', 'EN'] as const).filter(l => l !== language).map(lang => (
+              {(['UZ', 'RU'] as const).filter(l => l !== language).map(lang => (
                 <button
                   key={lang}
                   onClick={() => { setLanguage(lang); setIsLangOpen(false); }}
@@ -248,7 +248,7 @@ const App: React.FC = () => {
               />
             ))}
             <div className="absolute inset-0 bg-black/80"></div>
-            <div className="absolute inset-0 opacity-10 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+            <div className="absolute inset-0 opacity-10 mix-blend-overlay bg-[url('/stardust.webp')]"></div>
           </div>
 
           <div className="relative z-10 flex flex-col h-full justify-between py-24 px-10 md:px-16">

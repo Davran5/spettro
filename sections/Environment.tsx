@@ -98,7 +98,7 @@ export const Environment: React.FC<SectionProps> = ({ id }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#0a1a0f]/80 to-[#050505]" />
         
         {/* Animated Particles/Dust */}
-        <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] animate-pulse"></div>
+        <div className="absolute inset-0 opacity-20 bg-[url('/stardust.webp')] animate-pulse"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10 w-full">

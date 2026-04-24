@@ -28,9 +28,16 @@ app.use(express.static(distPath, {
   }
 }));
 
+app.get('/', (_req, res) => {
+  res.redirect(301, '/uz/');
+});
+
 // 2. Handle SPA Routing (Wildcard Route)
 app.get('*', (req, res) => {
-  const indexPath = path.join(distPath, 'index.html');
+  const route = req.path.startsWith('/ru') ? 'ru' : req.path.startsWith('/uz') ? 'uz' : '';
+  const indexPath = route
+    ? path.join(distPath, route, 'index.html')
+    : path.join(distPath, 'index.html');
   
   if (fs.existsSync(indexPath)) {
       res.sendFile(indexPath);

@@ -148,7 +148,7 @@ export const About: React.FC<SectionProps> = ({ id }) => {
             {/* BACKGROUND IMAGE */}
             <div className="absolute inset-0 z-0">
                 <img 
-                    src="https://i.ibb.co/s9fY381Q/phil-back-copy.jpg" 
+                    src={ASSETS.partnerBg} 
                     alt="Carbon Texture" 
                     className="w-full h-full object-cover opacity-60" 
                 />
@@ -156,7 +156,7 @@ export const About: React.FC<SectionProps> = ({ id }) => {
                 <div className="absolute inset-0 bg-black/40"></div>
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl max-h-[500px] bg-white/5 blur-[120px] rounded-full pointer-events-none mix-blend-overlay"></div>
             </div>
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 pointer-events-none mix-blend-overlay z-0"></div>
+            <div className="absolute inset-0 bg-[url('/stardust.webp')] opacity-10 pointer-events-none mix-blend-overlay z-0"></div>
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="flex flex-col items-center text-center">
@@ -231,7 +231,7 @@ export const About: React.FC<SectionProps> = ({ id }) => {
                 {/* Heavy overlays for readability against video */}
                 <div className="absolute inset-0 bg-black/80 backdrop-blur-[3px]"></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-5 pointer-events-none mix-blend-overlay"></div>
+                <div className="absolute inset-0 bg-[url('/stardust.webp')] opacity-5 pointer-events-none mix-blend-overlay"></div>
             </div>
 
             <div className="container mx-auto px-6 relative z-10">

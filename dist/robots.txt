@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://spettro.uz/sitemap.xml
+Sitemap: https://spettro.uz/sitemap-images.xml

@@ -4,51 +4,51 @@ import { ColorSwatch } from './types';
 export const ASSETS = {
   // Hero Video: Vibrant ink mixing in water
   heroVideo: "https://www.pexels.com/download/video/7565450/",
-  heroPoster: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2000&auto=format&fit=crop",
+  heroPoster: "/hero-poster.webp",
 
   // Logo
-  logo: "/logo_sp.png",
-  logoSymbol: "/logo_s.png",
+  logo: "/logo_sp.webp",
+  logoSymbol: "/logo_s.webp",
 
   // Science Section: High contrast textures
-  iceBg: "/cold_road.jpg", // Frozen texture
-  fireBg: "/hot_road.jpg", // Lava/Fire texture
+  iceBg: "/cold_road.webp", // Frozen texture
+  fireBg: "/hot_road.webp", // Lava/Fire texture
 
   // Products: Generic white paint bucket mocks with transparent backgrounds
-  bucketViso: "/prod_viso.jpg",
-  bucketBianco: "/prod_bianco.jpg",
-  bucketCeleste: "/prod_celeste.jpg",
-  bucketPerla: "/prod_perla.jpg",
-  bucketCeramic: "/Ceramic.jpg", // Using Ceramic.jpg as it seems to be the one
-  prodCeramic: "/prod_ceramic.png",
-  bucketMaestro: "/prod_maestro.jpg",
-  bucketPrimer: "/prod_primer.jpg",
-  bucketSofia: "/prod_safia.jpg",
+  bucketViso: "/prod_viso.webp",
+  bucketBianco: "/prod_bianco.webp",
+  bucketCeleste: "/prod_celeste.webp",
+  bucketPerla: "/prod_perla.webp",
+  bucketCeramic: "/Ceramic.webp", // Using Ceramic.webp as it seems to be the one
+  prodCeramic: "/prod_ceramic.webp",
+  bucketMaestro: "/prod_maestro.webp",
+  bucketPrimer: "/prod_primer.webp",
+  bucketSofia: "/prod_safia.webp",
 
   // Interiors: Luxury dark room
-  interiorRoom: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop",
+  interiorRoom: "/interior-room.webp",
 
   // Road: Dark highway with lights
-  roadNight: "https://i.ibb.co/QvkgNjLL/upscaled-2-K.jpg",
+  roadNight: "/road-night.webp",
 
   // Environment: Macro leaf/nature
-  envBg: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop",
+  envBg: "/environment-bg.webp",
 
   // Lab: Research & Development
-  labBg: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2000&auto=format&fit=crop",
+  labBg: "/lab-bg.webp",
 
   // Partner: Architectural/Business context
-  partnerBg: "/phil-back.jpg",
+  partnerBg: "/phil-back.webp",
 
   // Road Spec Visuals
-  hotTire: "/Hot-Tire.png",
-  adhesion: "/Adhesion.png",
-  abrasion: "/Abrasion.png",
-  eco: "/Eco.png",
-  nightViz: "/Night.png",
+  hotTire: "/Hot-Tire.webp",
+  adhesion: "/Adhesion.webp",
+  abrasion: "/Abrasion.webp",
+  eco: "/Eco.webp",
+  nightViz: "/Night.webp",
 
   // Plaster Texture
-  plasterTexture: "https://images.unsplash.com/photo-1594904351111-a072f80b1a71?q=80&w=2000&auto=format&fit=crop",
+  plasterTexture: "/plaster-texture.webp",
 };
 
 export const COLORS: ColorSwatch[] = [
@@ -64,24 +64,24 @@ export const COLORS: ColorSwatch[] = [
 ];
 
 export const COLORANTS = [
-  { name: 'Camel', hex: '#C19A6B', image: '/Camel.png' },
-  { name: 'Red Oxide', hex: '#7A3530', image: '/Red-Oxide.png' },
-  { name: 'Orange', hex: '#E86A22', image: '/Orange.png' },
-  { name: 'Tabacco', hex: '#63493B', image: '/Tabacco.png' },
-  { name: 'Earthy', hex: '#87654E', image: '/Earthy.png' },
-  { name: 'Red Crimson', hex: '#9E1B32', image: '/Red-Crimson.png' },
-  { name: 'Spruce', hex: '#2C403B', image: '/Spruce.png' },
-  { name: 'Yellow Oxide', hex: '#D49E37', image: '/Yellow-Oxide.png' },
-  { name: 'Terracota', hex: '#B55E42', image: '/Terracota.png' },
-  { name: 'Violet', hex: '#7A4588', image: '/Violet.png' },
-  { name: 'Yellow', hex: '#F2C908', image: '/Yellow.png' },
-  { name: 'Blue', hex: '#1C4996', image: '/Blue.png' },
-  { name: 'White', hex: '#F0EFE9', image: '/White.png' },
-  { name: 'Magenta', hex: '#B33A88', image: '/Magenta.png' },
-  { name: 'Red', hex: '#CC1F27', image: '/Red.png' },
-  { name: 'Choco', hex: '#4A332A', image: '/Choco.png' },
-  { name: 'Green', hex: '#265C36', image: '/Green.png' },
-  { name: 'Black', hex: '#1A1A1A', image: '/Black.png' },
-  { name: 'Graphite', hex: '#3A3A3A', image: '/Graphite.png' },
-  { name: 'Lemon', hex: '#EFD622', image: '/Lemon.png' },
+  { name: 'Camel', hex: '#C19A6B', image: '/Camel.webp' },
+  { name: 'Red Oxide', hex: '#7A3530', image: '/Red-Oxide.webp' },
+  { name: 'Orange', hex: '#E86A22', image: '/Orange.webp' },
+  { name: 'Tabacco', hex: '#63493B', image: '/Tabacco.webp' },
+  { name: 'Earthy', hex: '#87654E', image: '/Earthy.webp' },
+  { name: 'Red Crimson', hex: '#9E1B32', image: '/Red-Crimson.webp' },
+  { name: 'Spruce', hex: '#2C403B', image: '/Spruce.webp' },
+  { name: 'Yellow Oxide', hex: '#D49E37', image: '/Yellow-Oxide.webp' },
+  { name: 'Terracota', hex: '#B55E42', image: '/Terracota.webp' },
+  { name: 'Violet', hex: '#7A4588', image: '/Violet.webp' },
+  { name: 'Yellow', hex: '#F2C908', image: '/Yellow.webp' },
+  { name: 'Blue', hex: '#1C4996', image: '/Blue.webp' },
+  { name: 'White', hex: '#F0EFE9', image: '/White.webp' },
+  { name: 'Magenta', hex: '#B33A88', image: '/Magenta.webp' },
+  { name: 'Red', hex: '#CC1F27', image: '/Red.webp' },
+  { name: 'Choco', hex: '#4A332A', image: '/Choco.webp' },
+  { name: 'Green', hex: '#265C36', image: '/Green.webp' },
+  { name: 'Black', hex: '#1A1A1A', image: '/Black.webp' },
+  { name: 'Graphite', hex: '#3A3A3A', image: '/Graphite.webp' },
+  { name: 'Lemon', hex: '#EFD622', image: '/Lemon.webp' },
 ];

@@ -265,7 +265,7 @@ export const Interior: React.FC<SectionProps> = ({ id }) => {
                                         <div className="w-full relative bg-gradient-to-b from-gray-800 to-black overflow-hidden h-[40%] md:h-[55%]">
 
                                             {/* Background Texture */}
-                                            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/concrete-wall.png')] opacity-20 mix-blend-overlay pointer-events-none z-10"></div>
+                                            <div className="absolute inset-0 bg-[url('/concrete-wall.webp')] opacity-20 mix-blend-overlay pointer-events-none z-10"></div>
 
                                             {/* 
                         Color Glow 

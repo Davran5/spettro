@@ -25,13 +25,13 @@ export const CeramicPlaster: React.FC<SectionProps> = ({ id }) => {
       <div className="absolute inset-0 z-0">
           {/* Mobile Image */}
           <img 
-            src="https://i.ibb.co/q3pxGHhM/Ceramic-Mob.jpg" 
+            src="/Ceramic-Mob.webp" 
             alt="Ceramic Plaster Banner Mobile" 
             className="md:hidden w-full h-full object-cover object-center opacity-100"
           />
           {/* Desktop Image */}
           <img 
-            src="https://i.ibb.co/v62L2kxK/Ceramic.jpg" 
+            src="/Ceramic.webp" 
             alt="Ceramic Plaster Banner Desktop" 
             className="hidden md:block w-full h-full object-cover object-right md:object-center opacity-100 scale-105"
           />
@@ -98,7 +98,7 @@ export const CeramicPlaster: React.FC<SectionProps> = ({ id }) => {
                     
                     {/* Background matching the banner */}
                     <img 
-                        src="https://i.ibb.co/v62L2kxK/Ceramic.jpg" 
+                        src="/Ceramic.webp" 
                         className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay group-hover:scale-110 transition-transform duration-700" 
                         alt="Background"
                     />
