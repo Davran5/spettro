@@ -470,7 +470,7 @@ const RU_TRANSLATIONS = {
   about: {
     est: 'Осн. 2023 • Ташкент',
     title: 'Философия',
-    fullText: "В SPETTRO\nмы верим, что превосходная химическая инженерия\nдолжна быть отраслевым стандартом, а не роскошью.\nМы создали модель производства, которая уважает\nкак архитектурную целостность ваших проектов,\nтак и финансовую разумность вашего бюджета.",
+    fullText: "В SPETTRO мы убеждены, что передовая инженерия\nдолжна быть отраслевым стандартом, а не роскошью.\nМы создали модель производства, которая уважает\nкак архитектурную целостность ваших проектов,\nи экономическую целесообразность вашего бюджета.",
     keywords: [
       "немецкого уровня", "локализованным производством", "устраняем импортные пошлины", "логистические наценки", "премиальное немецкое сырье", "Узбекистане",
       "Истинная ценность", "экстремальных тепловых циклов", "превосходной адгезией", "эластичностью", "увеличивает интервалы обслуживания", "максимизирует срок службы",
@@ -820,7 +820,7 @@ const UZ_TRANSLATIONS = {
   about: {
     est: 'Tashkil etilgan 2023 • Toshkent',
     title: 'Falsafa',
-    fullText: "SPETTRO da\nbiz yuqori darajadagi kimyoviy muhandislik\nhashamat emas, balki sanoat standarti bo'lishi kerakligiga ishonamiz.\nBiz sizning loyihalaringizning arxitektura butunligini\nva byudjetingizning moliyaviy oqilonaligini hurmat qiladigan\nishlab chiqarish modelini yaratdik.",
+    fullText: "SPETTRO da biz yuqori kimyoviy muhandislik\nhashamat emas, sanoat standarti bo'lishiga ishonamiz.\nBiz loyihalaringizning arxitektura butunligini\nva byudjetingizning moliyaviy oqilonaligini\nhurmat qiluvchi ishlab chiqarish modelini yaratdik.",
     keywords: [
       "Nemis darajasidagi", "mahalliylashtirilgan ishlab chiqarish", "import bojlarini", "logistika ustamalarini", "premium nemis xomashyosidan", "O'zbekiston",
       "Haqiqiy qiymat", "Ekstremal termal tsikllar", "yuqori yopishqoqlik", "elastiklikka", "xizmat ko'rsatish oraliqlarini uzaytirish", "ishlash muddatini maksimal darajada oshirish",
