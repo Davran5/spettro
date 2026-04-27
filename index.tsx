@@ -4,6 +4,7 @@ import App from './App';
 import { Brochure } from './sections/Brochure';
 import { LanguageProvider } from './LanguageContext';
 import './index.css';
+import { getRouteLanguage, isBrochurePath } from './routing';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -11,10 +12,12 @@ if (!rootElement) {
 }
 
 const root = ReactDOM.createRoot(rootElement);
+const routeLanguage = getRouteLanguage(window.location.pathname);
+
 root.render(
   <React.StrictMode>
-    <LanguageProvider>
-      {window.location.pathname === '/brochure' ? <Brochure /> : <App />}
+    <LanguageProvider initialLanguage={routeLanguage}>
+      {isBrochurePath(window.location.pathname) ? <Brochure /> : <App />}
     </LanguageProvider>
   </React.StrictMode>
 );

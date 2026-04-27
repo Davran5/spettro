@@ -6,6 +6,7 @@ import { ASSETS, COLORANTS } from '../constants';
 export const Colorants: React.FC<SectionProps> = ({ id }) => {
   const { t } = useLanguage();
   const content = t.colorants;
+  const titleWords = content.title.split(' ');
   const [activeColorIndex, setActiveColorIndex] = useState(0);
 
   const activeColor = COLORANTS[activeColorIndex];
@@ -65,8 +66,14 @@ export const Colorants: React.FC<SectionProps> = ({ id }) => {
              <div className="flex flex-col xl:flex-row gap-6 xl:items-end justify-between">
                 {/* Title Group */}
                 <div className="flex flex-col gap-4 max-w-4xl">
-                    <h3 className="font-display text-6xl md:text-8xl text-white font-bold leading-[0.9] uppercase tracking-tighter drop-shadow-xl">
-                        {content.title}
+                    <h3 className="font-display text-5xl md:text-7xl xl:text-8xl text-white font-bold leading-[0.95] uppercase tracking-[0.03em] drop-shadow-xl">
+                        <span className="flex flex-wrap gap-x-4 md:gap-x-6 gap-y-2">
+                            {titleWords.map((word, index) => (
+                                <span key={`${word}-${index}`} className="inline-block">
+                                    {word}
+                                </span>
+                            ))}
+                        </span>
                     </h3>
                 </div>
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { SectionProps } from '../types';
 import { useLanguage } from '../LanguageContext';
 import { ASSETS } from '../constants';
@@ -82,7 +82,7 @@ export const About: React.FC<SectionProps> = ({ id }) => {
   };
 
   const points = t.about.points;
-  const lines = fullText.split('\n');
+  const naturalTextParts = fullText.replace(/\s*\n\s*/g, ' ').split(/(SPETTRO|Spettro)/g);
 
   return (
     <section id={id} className="relative z-10 bg-[#050505] text-white font-sans border-t border-white/10 overflow-hidden">
@@ -158,7 +158,7 @@ export const About: React.FC<SectionProps> = ({ id }) => {
             </div>
             <div className="absolute inset-0 bg-[url('/stardust.webp')] opacity-10 pointer-events-none mix-blend-overlay z-0"></div>
 
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-[1680px] mx-auto px-6 md:px-10 relative z-10">
                 <div className="flex flex-col items-center text-center">
                     <span className="font-mono text-spettro-orange text-xs tracking-[0.4em] uppercase mb-6 drop-shadow-lg">
                         {t.about.est}
@@ -169,45 +169,17 @@ export const About: React.FC<SectionProps> = ({ id }) => {
                     <div className="h-8 md:h-16 w-px bg-white/20 mb-6 md:mb-10 shadow-[0_0_10px_rgba(255,255,255,0.3)]"></div>
                     
                     {/* STATIC TEXT CONTAINER */}
-                    <div className="max-w-4xl mx-auto min-h-[120px] text-center px-4 md:px-0">
-                        
-                        {/* MOBILE: Continuous Text (Bigger, No Breaks) */}
-                        <div className="md:hidden text-2xl font-light leading-snug text-gray-100 drop-shadow-md">
-                             {fullText.replace(/\n/g, ' ').split(/(SPETTRO|Spettro)/g).map((part, pIdx) => (
-                                <span 
-                                    key={pIdx} 
+                    <div className="max-w-5xl mx-auto text-center px-4 md:px-8">
+                        <p className="text-2xl md:text-4xl font-light leading-relaxed text-gray-100 drop-shadow-md">
+                            {naturalTextParts.map((part, pIdx) => (
+                                <span
+                                    key={pIdx}
                                     className={part.toUpperCase() === 'SPETTRO' ? "animate-title-loading font-bold" : ""}
                                 >
                                     {part}
                                 </span>
                             ))}
-                            <span className="text-spettro-orange animate-pulse ml-1">|</span>
-                        </div>
-
-                        {/* DESKTOP: Split Lines (Original) */}
-                        <div className="hidden md:flex text-4xl font-light leading-relaxed text-gray-100 drop-shadow-md flex-col items-center gap-1">
-                            {lines.map((line, i) => (
-                                <div key={i} className="flex justify-center relative">
-                                    <div className="relative whitespace-pre-wrap inline-block"> 
-                                        {/* Content with Spettro Highlight */}
-                                        {line.split(/(SPETTRO|Spettro)/g).map((part, pIdx) => (
-                                            <span 
-                                                key={pIdx} 
-                                                className={part.toUpperCase() === 'SPETTRO' ? "animate-title-loading font-bold" : ""}
-                                            >
-                                                {part}
-                                            </span>
-                                        ))}
-                                        
-                                        {/* Cursor Indicator at the end */}
-                                        {i === lines.length - 1 && (
-                                            <span className="text-spettro-orange animate-pulse ml-2">|</span>
-                                        )}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
+                        </p>
                     </div>
 
                 </div>
@@ -218,7 +190,7 @@ export const About: React.FC<SectionProps> = ({ id }) => {
         <div ref={gridSectionRef} className="relative pt-0 pb-12 md:pb-24 border-t border-white/5 bg-transparent">
             
             {/* FIXED BACKGROUND LAYER */}
-            <div className={`fixed inset-0 z-0 transition-opacity duration-700 pointer-events-none ${isGridSectionVisible ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`absolute inset-0 md:fixed z-0 transition-opacity duration-700 pointer-events-none ${isGridSectionVisible ? 'opacity-100' : 'opacity-0'}`}>
                 <video
                     autoPlay
                     muted
@@ -234,13 +206,12 @@ export const About: React.FC<SectionProps> = ({ id }) => {
                 <div className="absolute inset-0 bg-[url('/stardust.webp')] opacity-5 pointer-events-none mix-blend-overlay"></div>
             </div>
 
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-[1720px] mx-auto px-6 md:px-10 relative z-10">
                 
                 {/* TECHNICAL SPECS 2x2 GRID */}
-                <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-px border border-white/10 bg-white/10">
                     {points.map((item, index) => {
                         const isVisible = visibleCards.has(index);
-                        const borderClasses = `border-b border-white/10 ${index % 2 === 0 ? 'md:border-r' : ''}`;
 
                         return (
                             <div 
@@ -248,15 +219,14 @@ export const About: React.FC<SectionProps> = ({ id }) => {
                                 data-index={index}
                                 ref={(el) => { cardRefs.current[index] = el; }}
                                 className={`
-                                    relative p-8 md:p-12 lg:p-16 group flex flex-col justify-center min-h-[250px] overflow-hidden
-                                    ${borderClasses}
+                                    relative p-8 md:p-12 lg:p-16 xl:p-20 group flex flex-col justify-center min-h-[260px] md:min-h-[320px] overflow-hidden bg-black/55
                                     transition-all duration-700 ease-out
                                     hover:bg-white/[0.05]
                                     ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
                                 `}
                             >
                                 {/* TEXT CONTENT */}
-                                <div className="relative z-10 flex flex-col items-start w-full pr-0 md:pr-10">
+                                <div className="relative z-10 flex flex-col items-start w-full pr-0 md:pr-14 lg:pr-20">
                                     <div className="flex flex-col gap-2 mb-6 w-full">
                                         <span className="font-mono text-sm text-spettro-orange tracking-widest font-bold">
                                             [ {(index + 1).toString().padStart(2, '0')} ]

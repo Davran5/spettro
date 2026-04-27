@@ -5,29 +5,29 @@ export const SEO_ROUTES = {
     code: 'uz',
     lang: 'uz',
     path: '/uz/',
-    title: "Spettro Uzbekistan | Bo'yoq, keramik suvoq va yo'l belgilash materiallari",
+    title: "Interyer va fasad bo'yoqlari | Spettro Uzbekistan",
     description:
-      "Spettro Uzbekistan Toshkentda ishlab chiqariladigan ekologik bo'yoqlar, keramik suvoq, kolerlar va 2K Bio-PU yo'l belgilash materiallarini taklif qiladi.",
+      "Spettro Uzbekistan Toshkentda interyer bo'yoqlari, fasad qoplamalari, dekorativ qoplamalar va keramik suvoq ishlab chiqaradi. O'zbekiston iqlimi uchun mos 2K Bio-PU yo'l belgilash materiallari ham mavjud.",
     locale: 'uz_UZ',
     ogImage: '/prod_ceramic.webp',
     keywords: [
-      "bo'yoq uzbekistan",
-      "bo'yoq toshkent",
-      'keramik suvoq',
+      "interyer bo'yoqlari",
+      "fasad bo'yoqlari",
+      "dekorativ qoplamalar",
+      "keramik suvoq",
+      "boyoq toshkent",
+      "boyoq uzbekistan",
       "yo'l belgilash bo'yog'i",
-      'Spettro Uzbekistan',
-      'ekologik boya',
-      'fasad boya',
-      'interyer boya'
+      'Spettro Uzbekistan'
     ],
     staticContent: {
-      heading: "Spettro Uzbekistan - bo'yoq va qoplama materiallari",
+      heading: "O'zbekistonda interyer va fasad bo'yoqlari",
       lead:
-        "Spettro Toshkentda Germaniya xomashyosi asosida interyer bo'yoqlari, keramik suvoq, chuqur singuvchi grunt, Regina Color kolerlari va ekstremal iqlimga chidamli 2K Bio-PU yo'l belgilash materiallarini ishlab chiqaradi.",
+        "Spettro Toshkentda Germaniya xomashyosi asosida interyer bo'yoqlari, fasad qoplamalari, dekorativ qoplamalar, keramik suvoq va rang beruvchi kolerlar ishlab chiqaradi.",
       sections: [
-        "O'zbekiston iqlimi uchun ishlab chiqilgan mustahkam, ekologik va kam VOC tarkibli qoplamalar.",
-        "Keramik suvoq, dekorativ qoplamalar, fasad va interyer bo'yoqlari hamda rang beruvchi kolerlar.",
-        "Yo'l belgilash uchun issiq, sovuq, abraziv yuklama va tungi ko'rinish talablariga mos texnologiyalar."
+        "Mahsulotlar O'zbekistonning issiq yozlari, sovuq qishlari va murakkab qurilish obyektlari uchun ishlab chiqilgan.",
+        "Keramik suvoq, chuqur singuvchi grunt va Regina Color kolerlari qurilish hamda pardozlash ishlari uchun bir tizim sifatida taklif qilinadi.",
+        "2K Bio-PU yo'l belgilash materiali yuqori harorat, sovuq va abraziv yuklamalarda barqaror ishlash uchun ishlab chiqilgan."
       ]
     }
   },
@@ -35,29 +35,29 @@ export const SEO_ROUTES = {
     code: 'ru',
     lang: 'ru',
     path: '/ru/',
-    title: 'Spettro Uzbekistan | Краски, керамическая штукатурка и дорожная разметка',
+    title: 'Интерьерные и фасадные краски | Spettro Uzbekistan',
     description:
-      'Spettro Uzbekistan производит в Ташкенте экологичные краски, керамическую штукатурку, колеры и материалы 2K Bio-PU для дорожной разметки.',
+      'Spettro Uzbekistan производит в Ташкенте интерьерные и фасадные краски, декоративные покрытия и керамическую штукатурку. Для климата Узбекистана доступны также материалы 2K Bio-PU для дорожной разметки.',
     locale: 'ru_RU',
     ogImage: '/prod_ceramic.webp',
     keywords: [
-      'краска узбекистан',
-      'краска ташкент',
+      'интерьерные краски',
+      'фасадные краски',
+      'декоративные покрытия',
       'керамическая штукатурка',
-      'дорожная разметка',
-      'Spettro Uzbekistan',
-      'экологичная краска',
-      'фасадная краска',
-      'интерьерная краска'
+      'краски ташкент',
+      'краски узбекистан',
+      'дорожная разметка 2K Bio-PU',
+      'Spettro Uzbekistan'
     ],
     staticContent: {
-      heading: 'Spettro Uzbekistan - краски и защитные покрытия',
+      heading: 'Краски и покрытия для интерьера и фасада в Узбекистане',
       lead:
-        'Spettro производит в Ташкенте интерьерные краски, керамическую штукатурку, глубокопроникающий грунт, колеры Regina Color и материалы 2K Bio-PU для дорожной разметки на основе немецкого сырья.',
+        'Spettro производит в Ташкенте интерьерные и фасадные краски, декоративные покрытия, керамическую штукатурку и колоранты на базе немецкого сырья.',
       sections: [
-        'Прочные, экологичные покрытия с низким содержанием VOC, адаптированные к климату Узбекистана.',
-        'Керамическая штукатурка, декоративные покрытия, фасадные и интерьерные краски, а также колеровочные системы.',
-        'Технологии дорожной разметки для жары, холода, абразивной нагрузки и высокой ночной видимости.'
+        'Линейка рассчитана на жаркое лето, холодную зиму и сложные строительные объекты в Узбекистане.',
+        'Керамическая штукатурка, грунтовка глубокого проникновения и колоранты Regina Color поставляются как единая система для отделки и защиты поверхностей.',
+        'Материал для дорожной разметки 2K Bio-PU сохраняет стабильность при высоких температурах, морозе и интенсивной абразивной нагрузке.'
       ]
     }
   }
@@ -83,10 +83,35 @@ export const organizationSchema = {
     { '@type': 'Country', name: 'Uzbekistan' },
     { '@type': 'Place', name: 'Central Asia' }
   ],
-  makesOffer: [
-    { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Interior paint' } },
-    { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Ceramic plaster' } },
-    { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Road marking material' } },
-    { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Colorants' } }
-  ]
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Spettro Uzbekistan coatings catalog',
+    itemListElement: [
+      {
+        '@type': 'OfferCatalog',
+        name: 'Architectural coatings',
+        itemListElement: [
+          { '@type': 'Thing', name: 'Interior paint' },
+          { '@type': 'Thing', name: 'Facade paint' },
+          { '@type': 'Thing', name: 'Decorative coating' }
+        ]
+      },
+      {
+        '@type': 'OfferCatalog',
+        name: 'Decorative and surface systems',
+        itemListElement: [
+          { '@type': 'Thing', name: 'Ceramic plaster' },
+          { '@type': 'Thing', name: 'Deep primer' },
+          { '@type': 'Thing', name: 'Colorants' }
+        ]
+      },
+      {
+        '@type': 'OfferCatalog',
+        name: 'Industrial marking systems',
+        itemListElement: [
+          { '@type': 'Thing', name: '2K Bio-PU road marking material' }
+        ]
+      }
+    ]
+  }
 };

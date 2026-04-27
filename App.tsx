@@ -6,7 +6,7 @@ import { Road } from './sections/Road';
 import { Partner } from './sections/Partner';
 import { CeramicPlaster } from './sections/CeramicPlaster';
 import { Colorants } from './sections/Colorants';
-import { ASSETS } from './constants';
+import { ASSETS, CONTACT } from './constants';
 import { useLanguage } from './LanguageContext';
 import { Language } from './translations';
 import { ContactModal } from './components/ContactModal';
@@ -29,6 +29,10 @@ const App: React.FC = () => {
 
   // Initialize Custom Smooth Scroll
   useEffect(() => {
+    if (typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches) {
+      return;
+    }
+
     // Check if Lenis is loaded from the script tag
     if (typeof window.Lenis === 'function') {
       const lenis = new window.Lenis({
@@ -92,7 +96,7 @@ const App: React.FC = () => {
       document.body.style.overflow = 'hidden';
     } else {
       if (lenisRef.current) lenisRef.current.start();
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     }
   }, [isMenuOpen]);
 
@@ -289,8 +293,18 @@ const App: React.FC = () => {
               <div className="flex flex-col gap-2">
                 <p className="text-[10px] font-mono tracking-[0.3em] text-spettro-orange mb-2">{t.nav.contactTitle}</p>
                 <p className="text-base text-white font-display uppercase tracking-wider">{t.nav.address}</p>
-                <p className="text-sm text-gray-400 font-light font-mono">+998 94 814 5005</p>
-                <p className="text-sm text-gray-400 font-light font-mono">info@spettro.uz</p>
+                <a
+                  href={CONTACT.phoneHref}
+                  className="w-fit font-mono text-lg md:text-xl text-white hover:text-spettro-orange transition-colors"
+                >
+                  {CONTACT.phoneDisplay}
+                </a>
+                <a
+                  href={CONTACT.emailHref}
+                  className="w-fit break-all font-mono text-base md:text-lg text-gray-300 hover:text-spettro-orange transition-colors"
+                >
+                  {CONTACT.email}
+                </a>
               </div>
             </div>
           </div>

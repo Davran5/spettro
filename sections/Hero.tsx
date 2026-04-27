@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { ASSETS } from '../constants';
 import { SectionProps } from '../types';
 import { useLanguage } from '../LanguageContext';
+import { Button } from '../components/Button';
+import { getLocalizedBrochurePath } from '../routing';
 
 export const Hero: React.FC<SectionProps> = ({ id }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const brochurePath = getLocalizedBrochurePath(language);
 
   useEffect(() => {
     // Trigger smooth entrance
@@ -14,12 +17,12 @@ export const Hero: React.FC<SectionProps> = ({ id }) => {
   }, []);
 
   const renderTagline = (text: string) => {
-    const parts = text.split('•');
+    const parts = text.split('\u2022');
     if (parts.length > 1) {
       return (
         <>
           <span className="animate-shimmer-text">{parts[0]}</span>
-          <span className="text-spettro-orange">•</span>
+          <span className="text-spettro-orange px-2">{'\u2022'}</span>
           <span className="animate-shimmer-text">{parts[1]}</span>
         </>
       );
@@ -28,7 +31,7 @@ export const Hero: React.FC<SectionProps> = ({ id }) => {
   };
 
   return (
-    <section id={id} className="relative h-screen w-full overflow-hidden font-sans">
+    <section id={id} className="relative min-h-[100svh] md:h-screen w-full overflow-hidden font-sans">
 
       <style>{`
         @keyframes light-pass {
@@ -63,7 +66,7 @@ export const Hero: React.FC<SectionProps> = ({ id }) => {
          BACKGROUND - FIXED
          Changed to fixed positioning to allow content to scroll over it.
       */}
-      <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
+      <div className="absolute inset-0 md:fixed w-full h-full z-0 pointer-events-none">
         <div className={`absolute inset-0 bg-black transition-opacity duration-1000 z-10 ${isLoaded ? 'opacity-0' : 'opacity-100'}`} />
 
         <video
@@ -85,7 +88,7 @@ export const Hero: React.FC<SectionProps> = ({ id }) => {
       {/* 
          CONTENT
       */}
-      <div className="relative z-10 container mx-auto px-6 h-full flex flex-col justify-center pt-24 md:pt-0">
+      <div className="relative z-10 max-w-[1680px] mx-auto px-6 min-h-[100svh] md:h-full flex flex-col justify-center pt-24 pb-24 md:pb-0 w-full">
 
         {/* Layout Grid */}
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full transition-all duration-1000 ease-out transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
@@ -104,22 +107,31 @@ export const Hero: React.FC<SectionProps> = ({ id }) => {
                 {renderTagline(t.hero.tagline)}
               </div>
             </div>
+
+            <div className="mt-8 w-full flex justify-center lg:justify-start">
+              <Button
+                onClick={() => { window.location.href = brochurePath; }}
+                className="px-6 py-3 text-sm md:text-base"
+              >
+                {t.partner.brochureButton}
+              </Button>
+            </div>
           </div>
 
           {/* Right: Text Column */}
           <div className="flex flex-col items-center lg:items-end text-center lg:text-right">
 
             {/* Core Value Proposition */}
-            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-white mb-8 leading-[0.9] uppercase tracking-tighter">
+            <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-white mb-6 md:mb-8 leading-[0.95] uppercase tracking-tighter max-w-3xl">
               <span className="font-bold block text-white">{t.hero.titleLine1}</span>
               <span className="font-black block text-white">{t.hero.titleLine2}</span>
-              <span className="font-sans font-medium normal-case text-spettro-orange block mt-4 text-xl md:text-3xl tracking-wide">
+              <span className="font-sans font-medium normal-case text-spettro-orange block mt-3 md:mt-4 text-lg md:text-3xl tracking-wide">
                 {t.hero.titleLine3}
               </span>
-            </h2>
+            </h1>
 
             {/* Description */}
-            <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed mb-0 max-w-xl font-sans drop-shadow-lg">
+            <p className="text-base md:text-xl text-gray-300 font-light leading-relaxed mb-0 max-w-xl font-sans drop-shadow-lg">
               {t.hero.description}
             </p>
 
@@ -152,7 +164,7 @@ export const Hero: React.FC<SectionProps> = ({ id }) => {
         </div>
 
         {/* MOBILE VIEW (Marquee Scrolling) */}
-        <div className="md:hidden w-full py-4 bg-black/80 backdrop-blur-md border-t border-white/10 overflow-hidden flex">
+        <div className="md:hidden w-full py-3 bg-black/80 backdrop-blur-md border-t border-white/10 overflow-hidden flex">
           {/* 
                We duplicate the content to ensure a seamless loop.
                The animation translates -50%, effectively showing the second half as the first half slides out.

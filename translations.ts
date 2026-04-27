@@ -1,4 +1,4 @@
-import { ASSETS } from './constants';
+﻿import { ASSETS } from './constants';
 
 export type Language = 'EN' | 'UZ' | 'RU';
 
@@ -101,11 +101,11 @@ const EN_TRANSLATIONS = {
     address: 'Tashkent, Uzbekistan'
   },
   hero: {
-    tagline: 'Bridging German Innovation and Uzbek Ambition • Est. 2023',
-    titleLine1: 'Innovative',
-    titleLine2: 'Paint Producers',
-    titleLine3: 'for the Extremes of Central Asia.',
-    description: 'We don’t just cover surfaces. We upgrade them. As your technology partner, we provide advanced, eco-friendly formulations that solve complex construction challenges. Superior chemical engineering is no longer a luxury. It is the new local standard.',
+    tagline: 'German raw materials • Tashkent production since 2023',
+    titleLine1: 'Paints',
+    titleLine2: 'and Coatings',
+    titleLine3: 'for interior, facade, and demanding Central Asian climates.',
+    description: 'Spettro develops interior paint, facade paint, decorative coatings, ceramic plaster, and colorant systems for projects in Uzbekistan. We combine German raw materials with local production to deliver durable, low-VOC coatings for real construction conditions.',
     iso: 'ISO 9001:2015 Certified',
     voc: 'Zero VOC Emissions',
     active: 'Production Line: Active'
@@ -458,11 +458,11 @@ const RU_TRANSLATIONS = {
     address: 'Ташкент, Узбекистан'
   },
   hero: {
-    tagline: 'Сочетая Немецкие Инновации и Узбекские Амбиции • Осн. 2023',
-    titleLine1: 'Инновационные',
-    titleLine2: 'Производители Красок',
-    titleLine3: 'для Экстремальных Условий Средней Азии.',
-    description: 'Мы не просто покрываем поверхности. Мы их улучшаем. Как ваш технологический партнер, мы предоставляем передовые, экологически чистые составы, решающие сложные строительные задачи. Превосходная химическая инженерия больше не роскошь. Это новый локальный стандарт.',
+    tagline: 'Немецкое сырье • Производство в Ташкенте с 2023 года',
+    titleLine1: 'Краски',
+    titleLine2: 'и покрытия',
+    titleLine3: 'для интерьера, фасада и климата Узбекистана.',
+    description: 'Spettro производит интерьерные и фасадные краски, декоративные покрытия, керамическую штукатурку и системы колеровки для объектов в Узбекистане. Мы сочетаем немецкое сырье и локальное производство, чтобы поставлять долговечные покрытия с низким уровнем VOC для реальных строительных условий.',
     iso: 'Сертификат ISO 9001:2015',
     voc: 'Нулевые Выбросы ЛОС',
     active: 'Линия Производства: Активна'
@@ -772,7 +772,7 @@ const RU_TRANSLATIONS = {
       whiteness: "Белизна"
     },
     pigments: {
-      bgTitle: "PIGМЕНТЫ",
+      bgTitle: "ПИГМЕНТЫ",
       german: "Немецкое Сырье"
     },
     cover: {
@@ -808,11 +808,11 @@ const UZ_TRANSLATIONS = {
     address: 'Toshkent, O\'zbekiston'
   },
   hero: {
-    tagline: 'Nemis Innovatsiyasi va O\'zbek Ambitsiyasi • Tashkil etilgan 2023',
-    titleLine1: 'Innovatsion',
-    titleLine2: 'Bo\'yoq Ishlab Chiqaruvchilar',
-    titleLine3: 'Markaziy Osiyo ekstremal sharoitlari uchun.',
-    description: 'Biz shunchaki sirtlarni qoplamaymiz. Biz ularni yangilaymiz. Sizning texnologik hamkoringiz sifatida biz murakkab qurilish muammolarini hal qiladigan ilg\'or, ekologik toza formulalarni taqdim etamiz. Yuqori darajadagi kimyoviy muhandislik endi hashamat emas. Bu yangi mahalliy standartdir.',
+    tagline: 'Nemis xomashyosi • 2023 yildan Toshkent ishlab chiqarishi',
+    titleLine1: 'Bo\'yoqlar',
+    titleLine2: 'va qoplamalar',
+    titleLine3: 'interyer, fasad va O\'zbekiston iqlimi uchun.',
+    description: 'Spettro interyer bo\'yoqlari, fasad qoplamalari, dekorativ qoplamalar, keramik suvoq va koler tizimlarini O\'zbekistondagi qurilish obyektlari uchun ishlab chiqaradi. Biz nemis xomashyosi va mahalliy ishlab chiqarishni birlashtirib, past VOC darajasiga ega, uzoq xizmat qiladigan qoplamalarni taklif qilamiz.',
     iso: 'ISO 9001:2015 Sertifikati',
     voc: 'Nol VOC Emissiyasi',
     active: 'Ishlab chiqarish liniyasi: Faol'

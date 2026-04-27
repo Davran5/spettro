@@ -35,19 +35,19 @@ function buildHead(route) {
     `<title>${escapeHtml(route.title)}</title>`,
     `<meta name="description" content="${escapeHtml(route.description)}" />`,
     `<meta name="keywords" content="${escapeHtml(route.keywords.join(', '))}" />`,
-    `<meta name="robots" content="index, follow, max-image-preview:large" />`,
+    '<meta name="robots" content="index, follow, max-image-preview:large" />',
     `<link rel="canonical" href="${canonical}" />`,
     `<link rel="alternate" hreflang="uz" href="${absoluteUrl(SEO_ROUTES.uz.path)}" />`,
     `<link rel="alternate" hreflang="ru" href="${absoluteUrl(SEO_ROUTES.ru.path)}" />`,
     `<link rel="alternate" hreflang="x-default" href="${absoluteUrl(SEO_ROUTES.uz.path)}" />`,
-    `<meta property="og:type" content="website" />`,
-    `<meta property="og:site_name" content="Spettro Uzbekistan" />`,
+    '<meta property="og:type" content="website" />',
+    '<meta property="og:site_name" content="Spettro Uzbekistan" />',
     `<meta property="og:locale" content="${route.locale}" />`,
     `<meta property="og:title" content="${escapeHtml(route.title)}" />`,
     `<meta property="og:description" content="${escapeHtml(route.description)}" />`,
     `<meta property="og:url" content="${canonical}" />`,
     `<meta property="og:image" content="${ogImage}" />`,
-    `<meta name="twitter:card" content="summary_large_image" />`,
+    '<meta name="twitter:card" content="summary_large_image" />',
     `<meta name="twitter:title" content="${escapeHtml(route.title)}" />`,
     `<meta name="twitter:description" content="${escapeHtml(route.description)}" />`,
     `<meta name="twitter:image" content="${ogImage}" />`,
@@ -66,19 +66,28 @@ function buildStaticContent(route) {
       </article>`;
 }
 
+function stripExistingSeo(html) {
+  return html
+    .replace(/<title>[\s\S]*?<\/title>\s*/i, '')
+    .replace(/<meta name="description"[\s\S]*?\/>\s*/gi, '')
+    .replace(/<meta name="keywords"[\s\S]*?\/>\s*/gi, '')
+    .replace(/<meta name="robots"[\s\S]*?\/>\s*/gi, '')
+    .replace(/<link rel="canonical"[\s\S]*?>\s*/gi, '')
+    .replace(/<link rel="alternate"[\s\S]*?>\s*/gi, '')
+    .replace(/<meta property="og:[\s\S]*?\/>\s*/gi, '')
+    .replace(/<meta name="twitter:[\s\S]*?\/>\s*/gi, '')
+    .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/gi, '');
+}
+
 function renderRouteHtml(baseHtml, route) {
-  let html = baseHtml
-    .replace(/<html[^>]*>/, `<html lang="${route.lang}">`)
-    .replace(/<title>[\s\S]*?<\/title>/, '')
-    .replace(/<meta[\s\S]*?name="description"[\s\S]*?\/>\s*/g, '')
-    .replace(/<meta[\s\S]*?name="robots"[\s\S]*?\/>\s*/g, '')
-    .replace(/<link rel="canonical"[\s\S]*?>/g, '')
-    .replace(/<link rel="alternate"[\s\S]*?>/g, '')
+  let html = stripExistingSeo(baseHtml)
+    .replace(/<html[^>]*>/i, `<html lang="${route.lang}">`)
     .replace('</head>', `    ${buildHead(route)}\n</head>`);
 
   html = html.replace(
     '<div id="root"></div>',
-    `<div id="root">${buildStaticContent(route)}\n    </div>`
+    `<div id="root">${buildStaticContent(route)}
+    </div>`
   );
 
   return html;
@@ -103,14 +112,16 @@ async function listWebpImages() {
 }
 
 async function writeSitemaps() {
-  const urls = ROUTE_LIST.map((route) => `  <url>
+  const urls = ROUTE_LIST.map(
+    (route) => `  <url>
     <loc>${absoluteUrl(route.path)}</loc>
     <xhtml:link rel="alternate" hreflang="uz" href="${absoluteUrl(SEO_ROUTES.uz.path)}" />
     <xhtml:link rel="alternate" hreflang="ru" href="${absoluteUrl(SEO_ROUTES.ru.path)}" />
     <xhtml:link rel="alternate" hreflang="x-default" href="${absoluteUrl(SEO_ROUTES.uz.path)}" />
     <changefreq>weekly</changefreq>
     <priority>${route.code === 'uz' ? '1.0' : '0.9'}</priority>
-  </url>`).join('\n');
+  </url>`
+  ).join('\n');
 
   await fs.writeFile(
     path.join(distDir, 'sitemap.xml'),
@@ -123,10 +134,12 @@ ${urls}
   );
 
   const images = await listWebpImages();
-  const imageEntries = ROUTE_LIST.map((route) => `  <url>
+  const imageEntries = ROUTE_LIST.map(
+    (route) => `  <url>
     <loc>${absoluteUrl(route.path)}</loc>
 ${images.map((image) => `    <image:image><image:loc>${absoluteUrl(image)}</image:loc></image:image>`).join('\n')}
-  </url>`).join('\n');
+  </url>`
+  ).join('\n');
 
   await fs.writeFile(
     path.join(distDir, 'sitemap-images.xml'),
@@ -161,6 +174,8 @@ async function writeRootRedirect() {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${escapeHtml(SEO_ROUTES.uz.title)}</title>
+    <link rel="icon" type="image/webp" href="/logo_s.webp" />
+    <link rel="apple-touch-icon" href="/logo_s.webp" />
     <meta name="description" content="${escapeHtml(SEO_ROUTES.uz.description)}" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="${absoluteUrl(SEO_ROUTES.uz.path)}" />
@@ -168,6 +183,23 @@ async function writeRootRedirect() {
     <link rel="alternate" hreflang="ru" href="${absoluteUrl(SEO_ROUTES.ru.path)}" />
     <link rel="alternate" hreflang="x-default" href="${absoluteUrl(SEO_ROUTES.uz.path)}" />
     <meta http-equiv="refresh" content="0; url=/uz/" />
+    <script>window.location.replace('/uz/');</script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: #050505;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+      }
+      main {
+        padding: 32px;
+      }
+      a {
+        color: #ff6a2f;
+      }
+    </style>
   </head>
   <body>
     <main>
@@ -175,7 +207,6 @@ async function writeRootRedirect() {
       <p>${escapeHtml(SEO_ROUTES.uz.staticContent.lead)}</p>
       <p><a href="/uz/">Uzbek</a> | <a href="/ru/">Русский</a></p>
     </main>
-    <script>window.location.replace('/uz/');</script>
   </body>
 </html>
 `,

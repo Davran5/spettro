@@ -110,7 +110,7 @@ export const Road: React.FC<SectionProps> = ({ id }) => {
     <section id={id} className="w-full relative">
       
       {/* FIXED BACKGROUND LAYER */}
-      <div className={`fixed inset-0 z-0 pointer-events-none transition-opacity duration-1000 ${isDurabilityVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`absolute inset-0 md:fixed z-0 pointer-events-none transition-opacity duration-1000 ${isDurabilityVisible ? 'opacity-100' : 'opacity-0'}`}>
           <video
             autoPlay
             muted
@@ -283,11 +283,11 @@ export const Road: React.FC<SectionProps> = ({ id }) => {
       </div>
 
       {/* EXTREME CLIMATE TEST (TRANSPARENT REVEAL) */}
-      <div ref={durabilitySectionRef} className="relative min-h-screen w-full flex flex-col items-center justify-center py-32 overflow-hidden bg-transparent z-20 border-t border-white/10">
+      <div ref={durabilitySectionRef} className="relative min-h-[75svh] md:min-h-screen w-full flex flex-col items-center justify-center py-20 md:py-32 overflow-hidden bg-transparent z-20 border-t border-white/10">
         <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#050505] to-transparent z-10 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-[#050505] to-transparent z-10 pointer-events-none" />
 
-        <div className="container mx-auto px-6 mb-16 relative z-20 text-center flex flex-col items-center">
+        <div className="container mx-auto px-6 mb-10 md:mb-16 relative z-20 text-center flex flex-col items-center">
             {/* Tag matches About style */}
             <span className="font-mono text-spettro-orange text-xs tracking-[0.4em] uppercase mb-6 drop-shadow-lg">
                 {t.road.durabilityTag}
@@ -306,7 +306,7 @@ export const Road: React.FC<SectionProps> = ({ id }) => {
 
         <div 
           ref={sliderRef}
-          className="relative w-full max-w-[90vw] h-[60vh] md:h-[70vh] cursor-ew-resize group overflow-hidden select-none border border-white/20 shadow-2xl rounded-sm z-20 bg-black"
+          className="relative w-full max-w-[92vw] md:max-w-[90vw] h-[42vh] min-h-[320px] md:h-[70vh] cursor-ew-resize group overflow-hidden select-none border border-white/20 shadow-2xl rounded-sm z-20 bg-black"
           onMouseMove={handleMouseMove}
           onTouchMove={handleTouchMove}
         >

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { ASSETS, COLORANTS } from '../constants';
+import { ASSETS, COLORANTS, CONTACT } from '../constants';
 import { TRANSLATIONS } from '../translations';
+import { getLocalizedHomePath, getRouteLanguage } from '../routing';
 
 const PageContainer: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => (
     <div
@@ -18,7 +19,7 @@ const PageContainer: React.FC<{ children: React.ReactNode; className?: string }>
         <div className="absolute bottom-0 left-0 w-full h-16 border-t border-white/10 flex items-center justify-between px-10 bg-[#050505] z-50">
             <div className="flex items-center gap-2 opacity-70">
                 <span className="font-mono text-[10px] tracking-widest text-gray-300">
-                    +998 94 814 5005 &nbsp;&nbsp;|&nbsp;&nbsp; info@spettro.uz
+                    {CONTACT.phoneDisplay} &nbsp;&nbsp;|&nbsp;&nbsp; {CONTACT.email}
                 </span>
             </div>
             {/* We need to be careful with handling language here if we want dynamic footer text */}
@@ -78,7 +79,7 @@ const BrochurePages: React.FC<{ lang: 'RU' | 'UZ' }> = ({ lang }) => {
                     </div>
                     <div className="text-right">
                         <p className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">www.spettro.uz</p>
-                        <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">+998 90 123 45 67</p>
+                        <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">{CONTACT.phoneDisplay}</p>
                     </div>
                 </div>
             </PageContainer>
@@ -166,7 +167,7 @@ const BrochurePages: React.FC<{ lang: 'RU' | 'UZ' }> = ({ lang }) => {
                     <div className="absolute bottom-0 left-0 w-full h-16 border-t border-white/10 flex items-center justify-between px-10 bg-[#050505] z-50">
                         <div className="flex items-center gap-2 opacity-70">
                             <span className="font-mono text-[10px] tracking-widest text-gray-300">
-                                +998 94 814 5005 &nbsp;&nbsp;|&nbsp;&nbsp; info@spettro.uz
+                                {CONTACT.phoneDisplay} &nbsp;&nbsp;|&nbsp;&nbsp; {CONTACT.email}
                             </span>
                         </div>
                         <div className="text-[10px] font-mono text-spettro-orange tracking-widest">
@@ -490,22 +491,28 @@ const BrochurePages: React.FC<{ lang: 'RU' | 'UZ' }> = ({ lang }) => {
 };
 
 export const Brochure: React.FC = () => {
+    const routeLanguage = typeof window === 'undefined' ? 'UZ' : getRouteLanguage(window.location.pathname);
+    const brochureUi = TRANSLATIONS[routeLanguage].brochure.ui;
+    const backPath = typeof window === 'undefined'
+        ? '/uz/'
+        : getLocalizedHomePath(routeLanguage);
+
     return (
         <div className="min-h-screen bg-neutral-900 py-10 print:py-0 print:bg-white">
 
             {/* Print Control - Hidden when printing */}
             <div className="fixed top-6 right-6 z-50 print:hidden flex gap-4">
                 <button
-                    onClick={() => window.location.href = '/'}
+                    onClick={() => window.location.href = backPath}
                     className="px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white font-mono text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors"
                 >
-                    Back
+                    {brochureUi.back}
                 </button>
                 <button
                     onClick={() => window.print()}
                     className="px-6 py-3 bg-spettro-orange text-white font-mono text-xs uppercase tracking-widest shadow-lg hover:bg-white hover:text-spettro-orange transition-colors"
                 >
-                    Print PDF
+                    {brochureUi.print}
                 </button>
             </div>
 

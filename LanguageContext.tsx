@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { TRANSLATIONS, Language } from './translations';
+import { getLocalizedBrochurePath, getLocalizedHomePath, getRouteLanguage, isBrochurePath } from './routing';
 
 interface LanguageContextType {
   language: Language;
@@ -9,20 +10,10 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-const getRouteLanguage = (): Language => {
-  if (typeof window === 'undefined') {
-    return 'UZ';
-  }
-
-  if (window.location.pathname.startsWith('/ru')) {
-    return 'RU';
-  }
-
-  return 'UZ';
-};
-
 export const LanguageProvider: React.FC<{ children: ReactNode; initialLanguage?: Language }> = ({ children, initialLanguage }) => {
-  const [language, setLanguageState] = useState<Language>(initialLanguage || getRouteLanguage());
+  const [language, setLanguageState] = useState<Language>(
+    initialLanguage || (typeof window === 'undefined' ? 'UZ' : getRouteLanguage(window.location.pathname))
+  );
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
@@ -31,9 +22,11 @@ export const LanguageProvider: React.FC<{ children: ReactNode; initialLanguage?:
       return;
     }
 
-    const targetPath = lang === 'RU' ? '/ru/' : '/uz/';
+    const targetPath = isBrochurePath(window.location.pathname)
+      ? getLocalizedBrochurePath(lang)
+      : getLocalizedHomePath(lang);
     if (window.location.pathname !== targetPath) {
-      window.history.pushState(null, '', targetPath);
+      window.location.href = targetPath;
     }
   };
 

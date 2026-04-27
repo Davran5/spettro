@@ -15,15 +15,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, colorSwatch
 
   if (!product || !colorSwatch) return null;
 
-  const gallery = product.gallery || [product.image];
-
-  // Gallery Navigation
-  const nextImage = () => {
-    setActiveImageIndex((prev) => (prev + 1) % gallery.length);
-  };
-  const prevImage = () => {
-    setActiveImageIndex((prev) => (prev - 1 + gallery.length) % gallery.length);
-  };
+  const gallery = [product.image];
 
   const modalContent = (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-0 md:p-6 overflow-hidden">
@@ -45,46 +37,34 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, colorSwatch
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
 
+        {/* Mobile hero image */}
+        <div className="md:hidden w-full shrink-0 bg-black border-b border-white/10">
+             <div className="relative aspect-[4/3] overflow-hidden bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06),transparent_60%)] p-4">
+                <img
+                    src={gallery[activeImageIndex]}
+                    alt={product.name}
+                    className="w-full h-full object-contain object-center"
+                />
+             </div>
+        </div>
+
         {/* LEFT: Gallery Section (50%) - HIDDEN ON MOBILE */}
         <div className="hidden md:flex w-full md:w-1/2 h-full relative bg-black items-center justify-center group">
              {/* Main Image */}
-             <div className="absolute inset-0">
+             <div className="absolute inset-0 p-8 lg:p-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_62%)]">
                 <img 
                     src={gallery[activeImageIndex]} 
                     alt={product.name}
-                    className="w-full h-full object-cover transition-opacity duration-500"
+                    className="w-full h-full object-contain object-center transition-opacity duration-500"
                 />
              </div>
              
-             {/* Navigation Arrows */}
-             {gallery.length > 1 && (
-                <>
-                    <button onClick={(e) => { e.stopPropagation(); prevImage(); }} className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/30 hover:bg-black/70 rounded-full text-white backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                    </button>
-                    <button onClick={(e) => { e.stopPropagation(); nextImage(); }} className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/30 hover:bg-black/70 rounded-full text-white backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                    </button>
-                </>
-             )}
-
-             {/* Dots */}
-             {gallery.length > 1 && (
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
-                    {gallery.map((_, idx) => (
-                        <div 
-                            key={idx} 
-                            className={`w-1.5 h-1.5 rounded-full transition-all ${idx === activeImageIndex ? 'bg-white w-4' : 'bg-white/40'}`}
-                        />
-                    ))}
-                </div>
-             )}
         </div>
 
         {/* RIGHT: Info Section (50% desktop, 100% mobile) */}
         <div className="w-full md:w-1/2 h-full bg-[#0c0c0c] flex flex-col overflow-y-auto">
             {/* Scrollable Content */}
-            <div className="p-8 md:p-12 pb-24">
+            <div className="p-6 md:p-12 pb-24">
                 
                 {/* Header */}
                 <div className="flex justify-between items-start mb-2">

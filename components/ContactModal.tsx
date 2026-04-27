@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Button } from './Button';
+import { submitForm } from '../formApi';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -13,26 +14,30 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
     email: '',
     message: ''
   });
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle');
 
   // Prevent rendering if not open
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Construct mailto link
-    const subject = `Inquiry from ${formData.name} - Spettro Lab`;
-    const body = `${formData.message}\n\n----------------\nName: ${formData.name}\nEmail: ${formData.email}`;
-    const mailtoLink = `mailto:info@spettro.uz?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
-    
-    // Close modal
-    onClose();
-    
-    // Reset form (optional, but good UX if they reopen)
-    setFormData({ name: '', email: '', message: '' });
+    setStatus('submitting');
+
+    try {
+      await submitForm({
+        formType: 'contact',
+        name: formData.name,
+        email: formData.email,
+        message: formData.message
+      });
+
+      onClose();
+      setFormData({ name: '', email: '', message: '' });
+      setStatus('idle');
+    } catch (error) {
+      console.error('Contact form submission failed', error);
+      setStatus('error');
+    }
   };
 
   const modalContent = (
@@ -108,10 +113,13 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             </div>
 
             <div className="pt-4 flex justify-end">
-              <Button type="submit" className="w-full md:w-auto">
-                Send Request
+              <Button type="submit" className="w-full md:w-auto" disabled={status === 'submitting'}>
+                {status === 'submitting' ? 'Sending...' : 'Send Request'}
               </Button>
             </div>
+            {status === 'error' && (
+              <p className="text-sm text-red-400">Unable to send the request. Please try again.</p>
+            )}
           </form>
 
           {/* Tech decoration corners */}

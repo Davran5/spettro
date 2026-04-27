@@ -6,3 +6,4 @@ deployment:
     - /usr/local/bin/npm install
     - /usr/local/bin/npm run build
     - /bin/rsync -aP --delete $REPOPATH/dist/ $DEPLOYPATH
+    - if [ -f $REPOPATH/.env ]; then /bin/cp $REPOPATH/.env $DEPLOYPATH/.env; fi

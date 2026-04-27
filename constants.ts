@@ -51,6 +51,13 @@ export const ASSETS = {
   plasterTexture: "/plaster-texture.webp",
 };
 
+export const CONTACT = {
+  phoneDisplay: '+998 97 344 69 00',
+  phoneHref: 'tel:+998973446900',
+  email: 'info@spettro.uz',
+  emailHref: 'mailto:info@spettro.uz'
+};
+
 export const COLORS: ColorSwatch[] = [
   // Existing
   { id: 'viso', name: 'Viso Blue', hex: '#005281', overlayColor: 'rgba(0, 82, 129, 0.5)' },
